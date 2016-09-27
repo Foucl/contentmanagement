@@ -287,8 +287,11 @@ def enable(root,
     '''
     global _enabled
     if _enabled is None:
+        print("loader.enable trying to enable root", root)
         nb_path_finder = NotebookPathFinder(root, notebook_path_loader_cls)
+        print("NbPathFinder returned", nb_path_finder)
         nb_finder = NotebookFinder(notebook_loader_cls)
+        print("nb_finder returned", nb_finder)
         sys.meta_path.append(nb_path_finder)
         sys.meta_path.append(nb_finder)
         _enabled = (nb_path_finder, nb_finder)
